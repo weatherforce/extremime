@@ -50,7 +50,7 @@ RUN conda install --quiet --yes \
 
 #### Python 3
 RUN conda install --quiet --yes --channel conda-forge \
-    jupyter jupyterlab \
+    jupyter jupyterlab numpy pandas \
     # Install NetCDF libraries
     xarray dask \
     # Dataviz libraries
