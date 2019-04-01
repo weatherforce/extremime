@@ -1,0 +1,6 @@
+Le format CSV OCO :
+http://www.coriolis.eu.org/Documentation/Data-formats
+www.coriolis.eu.org/content/download/22362/.../file/csv-oco.pdf
+
+Le format NETCDF OceanSite :
+http://www.oceansites.org/docs/oceansites_data_format_reference_manual.pdf

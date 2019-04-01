@@ -1,5 +1,6 @@
 # Vim
 *.sw?
 
-# Exemples
-exemples
+# Jupyter
+.Rhistory
+*.ipynb_checkpoints/
