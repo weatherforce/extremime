@@ -16,10 +16,9 @@ RUN apt-get update && \
     lftp \
     less \
     wget \
+    xvfb \
     gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-USER $NB_UID
 
 # R packages including IRKernel which gets installed globally.
 RUN conda install --quiet --yes \
@@ -43,10 +42,21 @@ RUN conda install --quiet --yes \
     'r-htmltools=0.3*' \
     'r-sparklyr=0.9*' \
     'r-htmlwidgets=1.2*' \
+    'r-formatr=1.6*' \
     'r-hexbin=1.27*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
+COPY install_uHMM.sh .
+RUN bash install_uHMM.sh && rm install_uHMM.sh
+# Remove X lock file so that it can be started again when running a container
+RUN rm /tmp/.X0-lock
+
+# Override startup scripts to include virtual display server
+COPY start-notebook.sh /usr/local/bin/
+COPY start-singleuser.sh /usr/local/bin/
+
+USER $NB_UID
 
 #### Python 3
 RUN conda install --quiet --yes --channel conda-forge \
