@@ -88,6 +88,8 @@ RUN export NODE_OPTIONS=--max-old-space-size=4096 && \
     jupyter labextension install @jupyterlab/plotly-extension@0.18.1 --no-build && \
     # JupyterLab chart editor support (optional)
     jupyter labextension install jupyterlab-chart-editor@1.0 --no-build && \
+    # Pyviz extensions
+    jupyter labextension install @pyviz/jupyterlab_pyviz && \
     # Build extensions (must be done to activate extensions since --no-build is used above)
     jupyter lab build && \
     # Unset NODE_OPTIONS environment variable
