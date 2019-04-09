@@ -73,6 +73,7 @@ RUN conda install --quiet --yes --channel conda-forge \
     jupyter nbextension enable code_prettify/code_prettify && \
     # ipyleaflet JupyterLab extensions
     jupyter labextension install jupyter-leaflet && \
+    conda install --quiet --yes --channel pyviz/label/dev pyviz && \
     conda remove --quiet --yes --force qt pyqt && \
     conda clean -tipsy
 
