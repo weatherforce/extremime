@@ -92,3 +92,5 @@ RUN export NODE_OPTIONS=--max-old-space-size=4096 && \
     jupyter lab build && \
     # Unset NODE_OPTIONS environment variable
     unset NODE_OPTIONS
+
+COPY --chown=jovyan:users exemples exemples
