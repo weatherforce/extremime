@@ -60,7 +60,7 @@ USER $NB_UID
 
 #### Python 3
 RUN conda install --quiet --yes --channel conda-forge \
-    jupyter jupyterlab numpy pandas \
+    jupyter jupyterlab appmode numpy pandas \
     # Install NetCDF libraries
     xarray dask \
     # Dataviz libraries
