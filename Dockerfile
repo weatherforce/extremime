@@ -47,8 +47,8 @@ RUN conda install --quiet --yes \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
-COPY install_uHMM.sh .
-RUN bash install_uHMM.sh && rm install_uHMM.sh
+COPY install_ifremer_libraries.sh .
+RUN bash install_ifremer_libraries.sh && rm install_ifremer_libraries.sh
 # Remove X lock file so that it can be started again when running a container
 RUN rm /tmp/.X0-lock
 
