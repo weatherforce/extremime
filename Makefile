@@ -16,3 +16,6 @@ run:
 
 logs:
 	docker logs $(CONTAINER)
+
+clean:
+	docker stop extremime
