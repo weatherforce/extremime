@@ -22,6 +22,7 @@ RUN apt-get update && \
 
 # R packages including IRKernel which gets installed globally.
 RUN conda install --quiet --yes \
+    conda-build \
     'r-base=3.5.1' \
     'r-rodbc=1.3*' \
     'unixodbc=2.3.*' \
@@ -44,7 +45,8 @@ RUN conda install --quiet --yes \
     'r-htmlwidgets=1.2*' \
     'r-formatr=1.6*' \
     'r-hexbin=1.27*' && \
-    conda clean -tipsy && \
+    conda install --quiet --yes --channel conda-forge 'r-naniar=0.4.*' && \
+    conda build purge-all && \
     fix-permissions $CONDA_DIR
 
 COPY install_ifremer_libraries.sh .
@@ -60,7 +62,7 @@ USER $NB_UID
 
 #### Python 3
 RUN conda install --quiet --yes --channel conda-forge \
-    jupyter jupyterlab appmode numpy pandas \
+    jupyter jupyterlab appmode numpy pandas jupytext \
     # Install NetCDF libraries
     xarray dask \
     # Dataviz libraries
@@ -75,7 +77,7 @@ RUN conda install --quiet --yes --channel conda-forge \
     jupyter labextension install jupyter-leaflet && \
     conda install --quiet --yes --channel pyviz/label/dev pyviz && \
     conda remove --quiet --yes --force qt pyqt && \
-    conda clean -tipsy
+    conda build purge-all
 
     # Plotly JupyterLab extensions
     # Avoid "JavaScript heap out of memory" errors during extension installation
