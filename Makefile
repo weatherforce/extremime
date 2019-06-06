@@ -1,12 +1,15 @@
-IMAGE=extremime
-CONTAINER=$(IMAGE)
+IMAGE=weatherforce/extremime
+CONTAINER=extremime
 PORT=7777
+COMMIT=$(shell git rev-parse HEAD | head -c 16)
+
 
 build:
-	docker build -t $(IMAGE) .
+	docker build -t $(IMAGE):$(COMMIT) .
+	docker tag $(IMAGE):$(COMMIT) $(IMAGE):latest
 
 push:
-	docker push weatherforce/extremime:latest
+	docker push $(IMAGE)
 
 run:
 	docker run --env JUPYTER_ENABLE_LAB=1 --detach --rm -p $(PORT):$(PORT) \
@@ -18,4 +21,4 @@ logs:
 	docker logs $(CONTAINER)
 
 clean:
-	docker stop extremime
+	docker stop $(CONTAINER)
