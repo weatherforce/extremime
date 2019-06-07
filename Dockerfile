@@ -45,7 +45,7 @@ RUN conda install --quiet --yes \
     'r-htmlwidgets=1.2*' \
     'r-formatr=1.6*' \
     'r-hexbin=1.27*' && \
-    conda install --quiet --yes --channel conda-forge 'r-naniar=0.4.*' && \
+    conda install --quiet --yes --channel conda-forge 'r-naniar=0.4.*' 'r-factoextra=1.*' && \
     conda build purge-all && \
     fix-permissions $CONDA_DIR
 
