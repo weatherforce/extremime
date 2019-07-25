@@ -73,9 +73,9 @@ Les informations suivantes doivent s'afficher à l'écran :
 
 ## Téléchargement et lancement de l'outil de traitement
 
-Lorsque *Docker* est en cours d'exécution sur le poste de travail, lancer la commande suivante dans un Terminal :
+Lorsque *Docker* est en cours d'exécution sur le poste de travail lancer la commande suivante dans un Terminal, en étant, au préalable, positionné dans le répertoire contenant ses données :
 
-	docker pull weatherforce/extremime:latest && docker run -p 8888:8888 weatherforce/extremime:latest
+	docker pull weatherforce/extremime:latest && docker run -p 8888:8888 -v "$PWD":/home/jovyan/work weatherforce/extremime:latest
 
 Lors de la première exécution, cette commande va procéder au téléchargement de l'environnement de travail, puis à son lancement sur le poste.
 
